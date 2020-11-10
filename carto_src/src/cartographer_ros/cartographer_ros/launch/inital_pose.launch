@@ -1,0 +1,14 @@
+<!--当cartographer处于定位模式下时，设置初始位姿-->
+<!--cartographer启动几秒之后再启动此launch-->
+<launch>
+<arg name="trajectory_id" default="1"/>
+ <!--结束当前的的trajectory 开始时为1 -->
+  <node pkg="rosservice" type="rosservice" name="finish_trajectory" args="call /finish_trajectory $(arg trajectory_id)"/>
+
+<!--重新开始trajectory,并设置初始位置，此时在submap中的trajectory为2-->
+  <node name="cartographer_start_trajectory" pkg="cartographer_ros" type="cartographer_start_trajectory" 
+      args= "
+      -configuration_directory $(find cartographer_ros)/configuration_files
+      -configuration_basename my_backpack_2d_localization.lua
+      -initial_pose {to_trajectory_id=0,relative_pose={translation={5.31,-3.19,0.},rotation={0.,0.,-1.9}}}" />
+ </launch>

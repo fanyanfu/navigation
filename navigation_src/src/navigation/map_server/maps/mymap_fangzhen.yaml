@@ -1,0 +1,6 @@
+image: /home/bipe/catkin_fangzhen/src/diff_wheeled_robot_gazebo/maps/mymap_fangzhen.pgm
+resolution: 0.050000
+origin: [-5.685126, -12.978018, 0.0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
